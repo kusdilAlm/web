@@ -1,132 +1,72 @@
-function snowBG() {
-  const canvas = document.getElementById("snowCanvas");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let snowflakes = [];
-
-function createSnowflakes(count) {
-  for (let i = 0; i < count; i++) {
-    snowflakes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 6 + 3, // Bigger size (3px - 9px)
-      speed: Math.random() * 2 + 0.5, // Adjust falling speed
-      wind: Math.random() * 1 - 0.5, // Slight side movement
-      opacity: Math.random() * 0.8 + 0.2, // Random transparency
-    });
-  }
-}
-
-function drawSnowflakes() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  for (let flake of snowflakes) {
-    ctx.beginPath();
-    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(57, 191, 5, ${flake.opacity})`; // White snowflakes
-    ctx.fill();
-    flake.y += flake.speed; // Move down
-    flake.x += flake.wind; // Slight side movement
+document.addEventListener("DOMContentLoaded", function() {
+  function optimizedSnow(canvasId, colors) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext("2d");
     
-    if (flake.y > canvas.height) {
-      flake.y = 0; // Reset to top
-      flake.x = Math.random() * canvas.width;
+    let snowflakes = [];
+    const MAX_FLAKES = 45; // More particles for better effect
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-  }
-  
-  requestAnimationFrame(drawSnowflakes);
-}
-
-// Smooth start: Add snow gradually
-function startSnowfall() {
-  let added = 0;
-  let interval = setInterval(() => {
-    createSnowflakes(10);
-    added += 10;
-    if (added >= 100) clearInterval(interval); // Stop at 100 flakes
-  }, 200);
-}
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  snowflakes = [];
-  startSnowfall();
-});
-
-startSnowfall();
-drawSnowflakes();
-};
-snowBG();
-
-
-
-
-
-
-function snow2() {
-  const canvas = document.getElementById("snowCanvasC");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let snowflakes = [];
-
-function createSnowflakes(count) {
-  for (let i = 0; i < count; i++) {
-    snowflakes.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 6 + 3, // Bigger size (3px - 9px)
-      speed: Math.random() * 2 + 0.5, // Adjust falling speed
-      wind: Math.random() * 1 - 0.5, // Slight side movement
-      opacity: Math.random() * 0.8 + 0.2, // Random transparency
-    });
-  }
-}
-
-function drawSnowflakes() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
-  for (let flake of snowflakes) {
-    ctx.beginPath();
-    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 2, 223, ${flake.opacity})`; // White snowflakes
-    ctx.fill();
-    flake.y += flake.speed; // Move down
-    flake.x += flake.wind; // Slight side movement
     
-    if (flake.y > canvas.height) {
-      flake.y = 0; // Reset to top
-      flake.x = Math.random() * canvas.width;
+    function createSnowflakes() {
+      snowflakes = Array.from({ length: MAX_FLAKES }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 4 + 2, // Slightly bigger particles
+        speed: Math.random() * 0.5 + 0.3,
+        wind: Math.random() * 0.4 - 0.2,
+        opacity: Math.random() * 0.5 + 0.4,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      }));
     }
+    
+    function drawSnowflakes() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      snowflakes.forEach(flake => {
+        ctx.beginPath();
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${flake.color},${flake.opacity})`;
+        ctx.fill();
+        
+        flake.y += flake.speed;
+        flake.x += flake.wind;
+        
+        if (flake.y > canvas.height) {
+          flake.y = -flake.radius;
+          flake.x = Math.random() * canvas.width;
+        }
+      });
+      requestAnimationFrame(drawSnowflakes);
+    }
+    
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createSnowflakes();
+    });
+    
+    resizeCanvas();
+    createSnowflakes();
+    drawSnowflakes();
   }
   
-  requestAnimationFrame(drawSnowflakes);
-}
-
-// Smooth start: Add snow gradually
-function startSnowfall() {
-  let added = 0;
-  let interval = setInterval(() => {
-    createSnowflakes(10);
-    added += 10;
-    if (added >= 100) clearInterval(interval); // Stop at 100 flakes
-  }, 200);
-}
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  snowflakes = [];
-  startSnowfall();
+  optimizedSnow("snowCanvas", [
+    "57, 191, 5", // Green
+    "6, 156, 255", // Blue
+    "255, 2, 223", // Pink
+    "6, 255, 10", // Lime
+    "255, 0, 0" // Red
+  ]);
+  
+  optimizedSnow("snowCanvasC", [
+    "6, 156, 255", // Blue
+    "255, 2, 223", // Pink
+    "255, 0, 0", // Red
+    "6, 255, 10" // Lime
+  ]);
+  
+  // Add the "show" class to make the container visible without delay
+  const container = document.querySelector('.container');
+  container.classList.add('show'); // Trigger the animation immediately
 });
-
-startSnowfall();
-drawSnowflakes();
-}
-snow2();
