@@ -50,7 +50,10 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    border: 1.3px solid white;
+    border-top: 1.3px solid rgb(255, 2, 223);
+    border-left: 1.3px solid rgb(255, 2, 223);
+    border-bottom: 1.3px solid rgba(57, 191, 5);
+    border-right: 1.3px solid rgba(57, 191, 5);
     transform: translateY(50px);
     animation: slideUp 1s ease-out forwards;
     overflow: hidden;
@@ -61,6 +64,7 @@ body {
         opacity: 0;
         transform: translateY(100px);
     }
+    
     to {
         opacity: 1;
         transform: translateY(0);
@@ -129,17 +133,34 @@ body {
 }
 
 .facebookT {
+    border-top: 1.3px solid rgb(255, 2, 223);
+    border-left: 1.3px solid rgb(255, 2, 223);
+    border-bottom: 1.3px solid rgba(6, 156, 255, 1);
+    border-right: 1.3px solid rgba(6, 156, 255, 1);
     color: rgba(6, 156, 255, 1);
 }
 
 .whatsappT {
-    color: rgba(6, 255, 10, 1);
+    border-top: 1.3px solid rgb(255, 2, 223);
+    border-left: 1.3px solid rgb(255, 2, 223);
+    border-bottom: 1.3px solid rgba(6, 255, 10, 1);
+    border-right: 1.3px solid rgba(6, 255, 10, 1);
+    color:
+    rgba(6, 255, 10, 1);
 }
 
 .instagramT {
+    border-top: 1.3px solid rgb(255, 2, 223);
+border-left: 1.3px solid rgb(255, 2, 223);
+border-bottom: 1.3px solid rgba(225, 48, 108, 1);
+border-right: 1.3px solid rgba(225, 48, 108, 1);
     color: rgba(225, 48, 108, 1);
 }
 
 .youtubeT {
+    border-top: 1.3px solid rgb(255, 2, 223);
+border-left: 1.3px solid rgb(255, 2, 223);
+border-bottom: 1.3px solid red;
+border-right: 1.3px solid red;
     color: red;
 }
