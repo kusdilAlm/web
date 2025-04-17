@@ -50,8 +50,7 @@ body {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    border-top: 1.3px solid rgb(255, 2, 223);
-    border-left: 1.3px solid rgb(255, 2, 223);
+    
     border-bottom: 1.3px solid rgba(57, 191, 5);
     border-right: 1.3px solid rgba(57, 191, 5);
     transform: translateY(50px);
@@ -71,7 +70,7 @@ body {
     }
 }
 
-.img-cont{
+.img-cont {
     background: url('IMG-20250319-WA0006.jpg') 0 0 no-repeat;
     width: 100px;
     height: 100px;
@@ -136,34 +135,26 @@ body {
 }
 
 .facebookT {
-    border-top: 1.3px solid rgb(255, 2, 223);
-    border-left: 1.3px solid rgb(255, 2, 223);
     border-bottom: 1.3px solid rgba(6, 156, 255, 1);
     border-right: 1.3px solid rgba(6, 156, 255, 1);
     color: rgba(6, 156, 255, 1);
 }
 
 .whatsappT {
-    border-top: 1.3px solid rgb(255, 2, 223);
-    border-left: 1.3px solid rgb(255, 2, 223);
     border-bottom: 1.3px solid rgba(6, 255, 10, 1);
     border-right: 1.3px solid rgba(6, 255, 10, 1);
     color:
-    rgba(6, 255, 10, 1);
+        rgba(6, 255, 10, 1);
 }
 
 .instagramT {
-    border-top: 1.3px solid rgb(255, 2, 223);
-border-left: 1.3px solid rgb(255, 2, 223);
-border-bottom: 1.3px solid rgba(225, 48, 108, 1);
-border-right: 1.3px solid rgba(225, 48, 108, 1);
+    border-bottom: 1.3px solid rgba(225, 48, 108, 1);
+    border-right: 1.3px solid rgba(225, 48, 108, 1);
     color: rgba(225, 48, 108, 1);
 }
 
 .youtubeT {
-    border-top: 1.3px solid rgb(255, 2, 223);
-border-left: 1.3px solid rgb(255, 2, 223);
-border-bottom: 1.3px solid red;
-border-right: 1.3px solid red;
+    border-bottom: 1.3px solid red;
+    border-right: 1.3px solid red;
     color: red;
 }
